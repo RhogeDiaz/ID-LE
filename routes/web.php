@@ -28,6 +28,10 @@ Route::prefix('courses')->group(function () {
         return Inertia::render('courses/pomodoro');
     })->name('pomodoro');
 
+    Route::get('/mindMap', function () {
+        return Inertia::render('courses/mindMap');
+    })->name('mindMap');
+
     Route::get('/priming', function () {
         return Inertia::render('courses/priming');
     })->name('priming');

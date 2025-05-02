@@ -18,18 +18,11 @@ export default function Dashboard() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const coursesAttending = [
         { title: 'Course 1', image: 'https://via.placeholder.com/150', description: 'Description for Course 1' },
-        { title: 'Course 2', image: 'https://via.placeholder.com/150', description: 'Description for Course 2' },
-        { title: 'Course 3', image: 'https://via.placeholder.com/150', description: 'Description for Course 3' },
-        { title: 'Course 3', image: 'https://via.placeholder.com/150', description: 'Description for Course 3' },
-        { title: 'Course 3', image: 'https://via.placeholder.com/150', description: 'Description for Course 3' },
-        { title: 'Course 3', image: 'https://via.placeholder.com/150', description: 'Description for Course 3' },
-        { title: 'Course 3', image: 'https://via.placeholder.com/150', description: 'Description for Course 3' },
-        { title: 'Course 3', image: 'https://via.placeholder.com/150', description: 'Description for Course 3' },
-        { title: 'Course 3', image: 'https://via.placeholder.com/150', description: 'Description for Course 3' },
-        { title: 'Course 3', image: 'https://via.placeholder.com/150', description: 'Description for Course 3' },
-        { title: 'Course 3', image: 'https://via.placeholder.com/150', description: 'Description for Course 3' }
     ];
     const exploreCourses = [
+        { title: 'Pomodoro Technique', image: 'https://via.placeholder.com/150', description: 'Description for Course A' },
+        { title: 'Mind Mapping', image: 'https://via.placeholder.com/150', description: 'Description for Course B' },
+        { title: 'Course C', image: 'https://via.placeholder.com/150', description: 'Description for Course C' },
         { title: 'Course A', image: 'https://via.placeholder.com/150', description: 'Description for Course A' },
         { title: 'Course B', image: 'https://via.placeholder.com/150', description: 'Description for Course B' },
         { title: 'Course C', image: 'https://via.placeholder.com/150', description: 'Description for Course C' },
