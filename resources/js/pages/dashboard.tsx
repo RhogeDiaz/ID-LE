@@ -17,15 +17,16 @@ export default function Dashboard() {
     var userImage = '/userImage.svg';
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const coursesAttending = [
-        { title: 'Course 1', image: 'https://via.placeholder.com/150', description: 'Description for Course 1' },
+        { title: 'Active Recall', image: 'https://via.placeholder.com/150', description: 'Description for Course 1', route: 'activeRecall' },
+        
     ];
     const exploreCourses = [
-        { title: 'Pomodoro Technique', image: 'https://via.placeholder.com/150', description: 'Description for Course A' },
-        { title: 'Mind Mapping', image: 'https://via.placeholder.com/150', description: 'Description for Course B' },
-        { title: 'Course C', image: 'https://via.placeholder.com/150', description: 'Description for Course C' },
-        { title: 'Course A', image: 'https://via.placeholder.com/150', description: 'Description for Course A' },
-        { title: 'Course B', image: 'https://via.placeholder.com/150', description: 'Description for Course B' },
-        { title: 'Course C', image: 'https://via.placeholder.com/150', description: 'Description for Course C' },
+        { title: 'Pomodoro Technique', image: 'https://via.placeholder.com/150', description: 'Description for Course A', route: 'pomodoro' },
+        { title: 'Mind Mapping', image: 'https://via.placeholder.com/150', description: 'Description for Course B', route: 'mindMap' },
+        { title: 'Feynman Technique', image: 'https://via.placeholder.com/150', description: 'Description for Course 2', route: 'feynman' },
+        { title: 'Interleaving', image: 'https://via.placeholder.com/150', description: 'Description for Course 3', route: 'interleaving' },
+        { title: 'Priming', image: 'https://via.placeholder.com/150', description: 'Description for Course 5', route: 'priming' },
+        { title: 'Spaced Repetition', image: 'https://via.placeholder.com/150', description: 'Description for Course 6', route: 'spacedRep' },
     ];
 
     return (
@@ -131,7 +132,7 @@ export default function Dashboard() {
                         {coursesAttending.map((course, index) => (
                             <Link
                                 key={index}
-                                href={route('courses')} // Replace with the appropriate route for each course
+                                href={route(course.route)} // Replace with the appropriate route for each course
                                 className="min-w-[200px] p-4 bg-blue-100 rounded-lg shadow-md"
                             >
                                 <img
@@ -153,7 +154,7 @@ export default function Dashboard() {
                         {exploreCourses.map((course, index) => (
                             <Link
                                 key={index}
-                                href={route('courses')} // Replace with the appropriate route for each course
+                                href={route(course.route)} // Replace with the appropriate route for each course
                                 className="min-w-[200px] p-4 bg-green-100 rounded-lg shadow-md"
                             >
                                 <img
