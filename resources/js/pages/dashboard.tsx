@@ -1,6 +1,6 @@
 import { type BreadcrumbItem } from '@/types';
 import React, { useState } from 'react';
-import { Link } from '@inertiajs/react'; // Import Link from Inertia
+import { Link } from '@inertiajs/react'; 
 import { FaHome, FaBook, FaCog, FaBars, FaUser, FaSignOutAlt } from 'react-icons/fa';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -17,16 +17,16 @@ export default function Dashboard() {
     var userImage = '/userImage.svg';
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const coursesAttending = [
-        { title: 'Active Recall', image: 'https://via.placeholder.com/150', description: 'Description for Course 1', route: 'activeRecall' },
+        { title: 'Active Recall', image: 'https://via.placeholder.com/150', description: 'A study method where you actively retrieve information from memory', route: 'activeRecall' },
         
     ];
     const exploreCourses = [
-        { title: 'Pomodoro Technique', image: 'https://via.placeholder.com/150', description: 'Description for Course A', route: 'pomodoro' },
-        { title: 'Mind Mapping', image: 'https://via.placeholder.com/150', description: 'Description for Course B', route: 'mindMap' },
-        { title: 'Feynman Technique', image: 'https://via.placeholder.com/150', description: 'Description for Course 2', route: 'feynman' },
-        { title: 'Interleaving', image: 'https://via.placeholder.com/150', description: 'Description for Course 3', route: 'interleaving' },
-        { title: 'Priming', image: 'https://via.placeholder.com/150', description: 'Description for Course 5', route: 'priming' },
-        { title: 'Spaced Repetition', image: 'https://via.placeholder.com/150', description: 'Description for Course 6', route: 'spacedRep' },
+        { title: 'Pomodoro Technique', image: 'https://via.placeholder.com/150', description: 'A time management method that involves working in focused 25-minute intervals', route: 'pomodoro' },
+        { title: 'Mind Mapping', image: 'https://via.placeholder.com/150', description: ' A visual method of organizing ideas by branching related concepts from a central topic.', route: 'mindMap' },
+        { title: 'Feynman Technique', image: 'https://via.placeholder.com/150', description: 'A learning method where you explain a concept in simple terms, as if teaching it to someone else.', route: 'feynman' },
+        { title: 'Interleaving', image: 'https://via.placeholder.com/150', description: 'A process where students mix multiple subjects or topics while they study to improve their learning.', route: 'interleaving' },
+        { title: 'Priming', image: 'https://via.placeholder.com/150', description: 'A teaching strategy that involves allowing students to preview what is coming up in order to prepare them.', route: 'priming' },
+        { title: 'Spaced Repetition', image: 'https://via.placeholder.com/150', description: 'A learning technique where you review material at increasing intervals to improve long-term retention', route: 'spacedRep' },
     ];
 
     return (
@@ -42,21 +42,21 @@ export default function Dashboard() {
                 </button>
                 <div className="hidden md:flex items-center space-x-4">
                     <Link
-                        href={route('dashboard')} // Redirect "Home" button to the dashboard
+                        href={route('dashboard')} 
                         className="flex items-center space-x-2 hover:text-gray-200"
                     >
                         <FaHome />
                         <span>Home</span>
                     </Link>
                     <Link
-                        href={route('courses')} // Convert "Courses" button to a link
+                        href={route('courses')}
                         className="flex items-center space-x-2 hover:text-gray-200"
                     >
                         <FaBook />
                         <span>Courses</span>
                     </Link>
                     <Link
-                        href={route('settings')} // Use Inertia's Link for navigation
+                        href={route('settings')}
                         className="flex items-center space-x-2 hover:text-gray-200"
                     >
                         <FaCog />
@@ -79,21 +79,21 @@ export default function Dashboard() {
                 </button>
                 <div className="mt-16 space-y-6 p-4">
                     <Link
-                        href={route('dashboard')} // Redirect "Home" button to the dashboard
+                        href={route('dashboard')} 
                         className="flex items-center space-x-2 hover:text-gray-300"
                     >
                         <FaHome />
                         <span>Home</span>
                     </Link>
                     <Link
-                        href={route('courses')} // Convert "Courses" button to a link
+                        href={route('courses')} 
                         className="flex items-center space-x-2 hover:text-gray-300"
                     >
                         <FaBook />
                         <span>Courses</span>
                     </Link>
                     <Link
-                        href={route('settings')} // Use Inertia's Link for navigation
+                        href={route('settings')}
                         className="flex items-center space-x-2 hover:text-gray-300"
                     >
                         <FaCog />
@@ -115,9 +115,9 @@ export default function Dashboard() {
                 {/* Top Div: User Info */}
                 <div className="flex p-8 md:p-16 md:gap-8 flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
                     <img
-                        src = {userImage}
+                        src={userImage}
                         alt="User"
-                        className=" w-20 h-20 md:w-32 md:h-32 rounded-full"
+                        className="w-20 h-20 md:w-32 md:h-32 rounded-full"
                     />
                     <div className="text-center md:text-left">
                         <h2 className="text-xl text-black font-semibold">{userName}</h2>
@@ -125,46 +125,63 @@ export default function Dashboard() {
                     </div>
                 </div>
 
+                {/* Decorative Line */}
+                <hr className="border-t-2 border-gray-300 mx-18" />
+
                 {/* Middle Div: Courses Attending */}
-                <div className='px-32'>
-                    <h2 className="text-2xl font-semibold mb-4">Courses Attending</h2>
-                    <div className="flex space-x-4 overflow-x-auto">
+                <div className="px-4 md:px-32">
+                    <h2 className="text-xl md:text-2xl font-semibold mb-4 text-black">Courses Attending</h2>
+                    <div className="flex gap-4 md:gap-8 overflow-x-auto">
                         {coursesAttending.map((course, index) => (
-                            <Link
+                            <div
                                 key={index}
-                                href={route(course.route)} // Replace with the appropriate route for each course
-                                className="min-w-[200px] p-4 bg-blue-100 rounded-lg shadow-md"
+                                className="min-w-[150px] md:min-w-[200px] max-w-32 p-3 md:p-4 bg-white border-black border-2 rounded-xl flex flex-col justify-between shadow-[0px_4px_6px_rgba(0,0,0,0.1)]"
                             >
-                                <img
-                                    src={course.image}
-                                    alt={course.title}
-                                    className="w-full h-32 object-cover rounded-md mb-2"
-                                />
-                                <h3 className="text-lg font-semibold">{course.title}</h3>
-                                <p className="text-sm text-gray-700">{course.description}</p>
-                            </Link>
+                                <div>
+                                    <img
+                                        src={course.image}
+                                        alt={course.title}
+                                        className="w-full h-24 md:h-32 object-cover rounded-md mb-2"
+                                    />
+                                    <h3 className="text-md md:text-lg font-semibold">{course.title}</h3>
+                                    <p className="text-xs md:text-sm text-gray-700 text-justify">{course.description}</p>
+                                </div>
+                                <Link
+                                    href={route(course.route)}
+                                    className="mt-3 md:mt-4 inline-block px-3 md:px-8 py-1.5 md:py-2 bg-[#2563EB] text-white rounded-4xl text-xs md:text-sm hover:bg-blue-700 self-center"
+                                >
+                                    Open Course
+                                </Link>
+                            </div>
                         ))}
                     </div>
                 </div>
 
                 {/* Bottom Div: Explore Courses */}
-                <div className='px-32'>
-                    <h2 className="text-2xl font-semibold mb-4">Explore Courses</h2>
-                    <div className="flex space-x-4 overflow-x-auto">
+                <div className="px-4 md:px-32">
+                    <h2 className="text-xl md:text-2xl font-semibold mb-4 text-black">Explore Courses</h2>
+                    <div className="flex gap-4 md:gap-8 overflow-x-auto">
                         {exploreCourses.map((course, index) => (
-                            <Link
+                            <div
                                 key={index}
-                                href={route(course.route)} // Replace with the appropriate route for each course
-                                className="min-w-[200px] p-4 bg-green-100 rounded-lg shadow-md"
+                                className="min-w-[150px] md:min-w-[200px] max-w-32 p-3 md:p-4 bg-white border-2 border-black rounded-xl flex flex-col justify-between shadow-[0px_4px_6px_rgba(0,0,0,0.1)]"
                             >
-                                <img
-                                    src={course.image}
-                                    alt={course.title}
-                                    className="w-full h-32 object-cover rounded-md mb-2"
-                                />
-                                <h3 className="text-lg font-semibold">{course.title}</h3>
-                                <p className="text-sm text-gray-700">{course.description}</p>
-                            </Link>
+                                <div>
+                                    <img
+                                        src={course.image}
+                                        alt={course.title}
+                                        className="w-full h-24 md:h-32 object-cover rounded-md mb-2"
+                                    />
+                                    <h3 className="text-md md:text-lg font-semibold">{course.title}</h3>
+                                    <p className="text-xs md:text-sm text-gray-700 text-justify">{course.description}</p>
+                                </div>
+                                <Link
+                                    href={route(course.route)}
+                                    className="mt-3 md:mt-4 inline-block px-3 md:px-8 py-1.5 md:py-2 bg-[#2563EB] text-white rounded-4xl text-xs md:text-sm hover:bg-blue-700 self-center"
+                                >
+                                    Open Course
+                                </Link>
+                            </div>
                         ))}
                     </div>
                 </div>
