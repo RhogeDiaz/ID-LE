@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// Import icons from a library like react-icons if available
+import { Link } from '@inertiajs/react'; // Import Link from Inertia
 import { FaHome, FaBook, FaCog, FaBars, FaUser, FaSignOutAlt } from 'react-icons/fa';
 
 const ActiveRecall = () => {
@@ -17,18 +17,27 @@ const ActiveRecall = () => {
           <FaBars />
         </button>
         <div className="hidden md:flex items-center space-x-4">
-          <button className="flex items-center space-x-2 hover:text-gray-200">
+          <Link
+            href={route('dashboard')} // Redirect "Home" button to the dashboard
+            className="flex items-center space-x-2 hover:text-gray-200"
+          >
             <FaHome />
             <span>Home</span>
-          </button>
-          <button className="flex items-center space-x-2 hover:text-gray-200">
+          </Link>
+          <Link
+            href={route('courses')} // Convert "Courses" button to a link
+            className="flex items-center space-x-2 hover:text-gray-200"
+          >
             <FaBook />
             <span>Courses</span>
-          </button>
-          <button className="flex items-center space-x-2 hover:text-gray-200">
+          </Link>
+          <Link
+            href={route('settings')} // Use Inertia's Link for navigation
+            className="flex items-center space-x-2 hover:text-gray-200"
+          >
             <FaCog />
             <span>Settings</span>
-          </button>
+          </Link>
         </div>
       </header>
 
@@ -45,18 +54,27 @@ const ActiveRecall = () => {
           &times;
         </button>
         <div className="mt-16 space-y-6 p-4">
-          <button className="flex items-center space-x-2 hover:text-gray-300">
-            <FaUser />
-            <span>Profile</span>
-          </button>
-          <button className="flex items-center space-x-2 hover:text-gray-300">
-            <FaCog />
-            <span>Settings</span>
-          </button>
-          <button className="flex items-center space-x-2 hover:text-gray-300">
+          <Link
+            href={route('dashboard')} // Redirect "Home" button to the dashboard
+            className="flex items-center space-x-2 hover:text-gray-300"
+          >
+            <FaHome />
+            <span>Home</span>
+          </Link>
+          <Link
+            href={route('courses')} // Convert "Courses" button to a link
+            className="flex items-center space-x-2 hover:text-gray-300"
+          >
             <FaBook />
             <span>Courses</span>
-          </button>
+          </Link>
+          <Link
+            href={route('settings')} // Use Inertia's Link for navigation
+            className="flex items-center space-x-2 hover:text-gray-300"
+          >
+            <FaCog />
+            <span>Settings</span>
+          </Link>
           <button className="flex items-center space-x-2 hover:text-gray-300">
             <FaSignOutAlt />
             <span>Log Out</span>
