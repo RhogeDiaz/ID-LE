@@ -70,7 +70,7 @@ export default function Dashboard() {
     }, []);
 
     return (
-        <div className="bg-white h-screen">
+        <div className="bg-white min-h-screen">
             {/* Header */}
             <header className="fixed top-0 left-0 w-full flex items-center justify-between p-4 bg-white md:bg-[#2563EB] text-black md:text-white shadow-md z-10">
                 <div className="text-xl font-bold">Logo</div>
@@ -151,7 +151,7 @@ export default function Dashboard() {
             </div>
 
             {/* Main Content */}
-            <div className="pt-20 p-6 space-y-8 h-full overflow-y-auto">
+            <div className="pt-20 p-6 space-y-8 min-h-screen">
                 {/* Top Div: User Info */}
                 <div className="flex p-8 md:p-16 md:gap-8 flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
                     <img
