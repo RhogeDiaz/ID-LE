@@ -1,7 +1,7 @@
 import { type BreadcrumbItem } from '@/types';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from '@inertiajs/react'; 
-import { FaHome, FaBook, FaCog, FaBars, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import { FaHome, FaBook, FaCog, FaBars, FaUser, FaSignOutAlt, FaArrowRight } from 'react-icons/fa';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -17,17 +17,57 @@ export default function Dashboard() {
     var userImage = '/userImage.svg';
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const coursesAttending = [
-        { title: 'Active Recall', image: 'https://via.placeholder.com/150', description: 'A study method where you actively retrieve information from memory', route: 'activeRecall' },
+        { title: 'Active Recall', image: '/activeRecall.png', description: 'A study method where you actively retrieve information from memory', route: 'activeRecall' },
         
     ];
     const exploreCourses = [
-        { title: 'Pomodoro Technique', image: 'https://via.placeholder.com/150', description: 'A time management method that involves working in focused 25-minute intervals', route: 'pomodoro' },
-        { title: 'Mind Mapping', image: 'https://via.placeholder.com/150', description: ' A visual method of organizing ideas by branching related concepts from a central topic.', route: 'mindMap' },
-        { title: 'Feynman Technique', image: 'https://via.placeholder.com/150', description: 'A learning method where you explain a concept in simple terms, as if teaching it to someone else.', route: 'feynman' },
-        { title: 'Interleaving', image: 'https://via.placeholder.com/150', description: 'A process where students mix multiple subjects or topics while they study to improve their learning.', route: 'interleaving' },
-        { title: 'Priming', image: 'https://via.placeholder.com/150', description: 'A teaching strategy that involves allowing students to preview what is coming up in order to prepare them.', route: 'priming' },
-        { title: 'Spaced Repetition', image: 'https://via.placeholder.com/150', description: 'A learning technique where you review material at increasing intervals to improve long-term retention', route: 'spacedRep' },
+        { title: 'Pomodoro Technique', image: '/pomodoro.png', description: 'A time management method that involves working in focused 25-minute intervals', route: 'pomodoro' },
+        { title: 'Mind Mapping', image: '/mindmap.png', description: ' A visual method of organizing ideas by branching related concepts from a central topic.', route: 'mindMap' },
+        { title: 'Feynman Technique', image: '/feynman.png', description: 'A learning method where you explain a concept in simple terms, as if teaching it to someone else.', route: 'feynman' },
+        { title: 'Interleaving', image: '/interleaving.png', description: 'A process where students mix multiple subjects or topics while they study to improve their learning.', route: 'interleaving' },
+        { title: 'Priming', image: '/priming.png', description: 'A teaching strategy that involves allowing students to preview what is coming up in order to prepare them.', route: 'priming' },
+        { title: 'Spaced Repetition', image: '/spacedRep.png', description: 'A learning technique where you review material at increasing intervals to improve long-term retention', route: 'spacedRep' },
     ];
+
+    const coursesAttendingRef = useRef<HTMLDivElement | null>(null);
+    const exploreCoursesRef = useRef<HTMLDivElement | null>(null);
+    const [showArrowAttending, setShowArrowAttending] = useState(false);
+    const [showArrowExplore, setShowArrowExplore] = useState(false);
+
+    useEffect(() => {
+        const checkScroll = (ref: React.RefObject<HTMLDivElement | null>, setShowArrow: React.Dispatch<React.SetStateAction<boolean>>) => {
+            if (ref.current) {
+                const { scrollWidth, clientWidth, scrollLeft } = ref.current;
+                // Adjust for potential fractional differences in scroll positions
+                setShowArrow(Math.ceil(scrollLeft + clientWidth) < scrollWidth);
+            }
+        };
+
+        const handleScroll = (ref: React.RefObject<HTMLDivElement | null>, setShowArrow: React.Dispatch<React.SetStateAction<boolean>>) => {
+            return () => checkScroll(ref, setShowArrow);
+        };
+
+        checkScroll(coursesAttendingRef, setShowArrowAttending);
+        checkScroll(exploreCoursesRef, setShowArrowExplore);
+
+        const handleResize = () => {
+            checkScroll(coursesAttendingRef, setShowArrowAttending);
+            checkScroll(exploreCoursesRef, setShowArrowExplore);
+        };
+
+        const attendingScrollListener = handleScroll(coursesAttendingRef, setShowArrowAttending);
+        const exploreScrollListener = handleScroll(exploreCoursesRef, setShowArrowExplore);
+
+        coursesAttendingRef.current?.addEventListener('scroll', attendingScrollListener);
+        exploreCoursesRef.current?.addEventListener('scroll', exploreScrollListener);
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            coursesAttendingRef.current?.removeEventListener('scroll', attendingScrollListener);
+            exploreCoursesRef.current?.removeEventListener('scroll', exploreScrollListener);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     return (
         <div className="bg-white h-screen">
@@ -129,9 +169,9 @@ export default function Dashboard() {
                 <hr className="border-t-2 border-gray-300 mx-18" />
 
                 {/* Middle Div: Courses Attending */}
-                <div className="px-4 md:px-32">
+                <div className="relative px-4 md:px-32">
                     <h2 className="text-xl md:text-2xl font-semibold mb-4 text-black">Courses Attending</h2>
-                    <div className="flex gap-4 md:gap-8 overflow-x-auto">
+                    <div className="flex gap-4 md:gap-8 overflow-x-auto pr-8" ref={coursesAttendingRef}>
                         {coursesAttending.map((course, index) => (
                             <div
                                 key={index}
@@ -155,12 +195,17 @@ export default function Dashboard() {
                             </div>
                         ))}
                     </div>
+                    {showArrowAttending && (
+                        <div className="absolute top-1/2 right-2 md:right-4 transform -translate-y-1/2 text-gray-500">
+                            <FaArrowRight />
+                        </div>
+                    )}
                 </div>
 
                 {/* Bottom Div: Explore Courses */}
-                <div className="px-4 md:px-32">
+                <div className="relative px-4 md:px-32">
                     <h2 className="text-xl md:text-2xl font-semibold mb-4 text-black">Explore Courses</h2>
-                    <div className="flex gap-4 md:gap-8 overflow-x-auto">
+                    <div className="flex gap-4 md:gap-8 overflow-x-auto pr-8" ref={exploreCoursesRef}>
                         {exploreCourses.map((course, index) => (
                             <div
                                 key={index}
@@ -184,6 +229,11 @@ export default function Dashboard() {
                             </div>
                         ))}
                     </div>
+                    {showArrowExplore && (
+                        <div className="absolute top-1/2 right-2 md:right-4 transform -translate-y-1/2 text-gray-500">
+                            <FaArrowRight />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
