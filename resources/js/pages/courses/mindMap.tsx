@@ -9,7 +9,10 @@ const MindMap = () => {
     <div className="bg-white">
       {/* Header */}
       <header className="fixed top-0 left-0 w-full flex items-center justify-between p-4 bg-white md:bg-[#2563EB] text-black md:text-white shadow-md z-10">
-        <div className="text-xl font-bold">Logo</div>
+        <div className="flex items-center space-x-2">
+          <img src="/brandLogo.png" alt="Brand Logo" className="h-8 md:h-10" />
+          <span className="hidden md:block text-2xl font-semibold">SuperLearning</span>
+        </div>
         <button
           className="text-black text-2xl md:text-white md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -55,27 +58,30 @@ const MindMap = () => {
         </button>
         <div className="mt-16 space-y-6 p-4">
           <Link
-            href={route('dashboard')} // Redirect "Home" button to the dashboard
+            href={route('dashboard')} 
             className="flex items-center space-x-2 hover:text-gray-300"
           >
             <FaHome />
             <span>Home</span>
           </Link>
           <Link
-            href={route('courses')} // Convert "Courses" button to a link
+            href={route('courses')} 
             className="flex items-center space-x-2 hover:text-gray-300"
           >
             <FaBook />
             <span>Courses</span>
           </Link>
           <Link
-            href={route('settings')} // Use Inertia's Link for navigation
+            href={route('settings')} 
             className="flex items-center space-x-2 hover:text-gray-300"
           >
             <FaCog />
             <span>Settings</span>
           </Link>
-          <button className="flex items-center space-x-2 hover:text-gray-300">
+          <button
+            onClick={() => window.location.href = route('home')} // Redirect to home
+            className="flex items-center space-x-2 hover:text-gray-300 hover:cursor-pointer"
+          >
             <FaSignOutAlt />
             <span>Log Out</span>
           </button>

@@ -2,6 +2,7 @@ import { type BreadcrumbItem, type SharedData } from '@/types';
 import { Transition } from '@headlessui/react';
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
+import { FaArrowLeft } from 'react-icons/fa'; // Import left arrow icon
 
 import DeleteUser from '@/components/delete-user';
 import HeadingSmall from '@/components/heading-small';
@@ -14,7 +15,7 @@ import SettingsLayout from '@/layouts/settings/layout';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Profile settings',
+        title: '',
         href: '/settings/profile',
     },
 ];
@@ -45,12 +46,21 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
             <Head title="Profile settings" />
 
             <SettingsLayout>
-                <div className="space-y-6">
+                <div className="space-y-6 text-black">
                     <HeadingSmall title="Profile information" description="Update your name and email address" />
+
+                    {/* User Image */}
+                    <div className="flex flex-col items-center space-y-4">
+                        <img
+                            src="/userImage.svg" // Replace with dynamic user image if available
+                            alt="User"
+                            className="w-24 h-24 rounded-full border-2 border-gray-300"
+                        />
+                    </div>
 
                     <form onSubmit={submit} className="space-y-6">
                         <div className="grid gap-2">
-                            <Label htmlFor="name">Name</Label>
+                            <Label htmlFor="name" className="text-black">Name</Label>
 
                             <Input
                                 id="name"
@@ -66,7 +76,7 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
                         </div>
 
                         <div className="grid gap-2">
-                            <Label htmlFor="email">Email address</Label>
+                            <Label htmlFor="email" className="text-black">Email address</Label>
 
                             <Input
                                 id="email"

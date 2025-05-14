@@ -41,7 +41,7 @@ export default function Register({ status }: RegisterProps) {
         <div className="bg-white text-[#1b1b18] min-h-screen flex md:px-8">
             {/* Header */}
             <header className="fixed top-0 left-0 w-full flex items-center justify-between p-4 bg-white md:bg-[#2563EB] text-black md:text-white shadow-md z-10">
-                <div className="text-xl font-bold">Logo</div>
+                <img src="/brandLogo.png" alt="Brand Logo" className="h-8 md:h-10" />
             </header>
 
             {/* Left Section: Header Content */}

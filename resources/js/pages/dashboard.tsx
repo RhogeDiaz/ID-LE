@@ -71,39 +71,42 @@ export default function Dashboard() {
 
     return (
         <div className="bg-white min-h-screen">
-            {/* Header */}
-            <header className="fixed top-0 left-0 w-full flex items-center justify-between p-4 bg-white md:bg-[#2563EB] text-black md:text-white shadow-md z-10">
-                <div className="text-xl font-bold">Logo</div>
-                <button
-                    className="text-black text-2xl md:text-white md:hidden"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                >
-                    <FaBars />
-                </button>
-                <div className="hidden md:flex items-center space-x-4">
-                    <Link
-                        href={route('dashboard')} 
-                        className="flex items-center space-x-2 hover:text-gray-200"
-                    >
-                        <FaHome />
-                        <span>Home</span>
-                    </Link>
-                    <Link
-                        href={route('courses')}
-                        className="flex items-center space-x-2 hover:text-gray-200"
-                    >
-                        <FaBook />
-                        <span>Courses</span>
-                    </Link>
-                    <Link
-                        href={route('settings')}
-                        className="flex items-center space-x-2 hover:text-gray-200"
-                    >
-                        <FaCog />
-                        <span>Settings</span>
-                    </Link>
-                </div>
-            </header>
+{/* Header */}
+      <header className="fixed top-0 left-0 w-full flex items-center justify-between p-4 bg-white md:bg-[#2563EB] text-black md:text-white shadow-md z-10">
+          <div className="flex items-center space-x-2">
+              <img src="/brandLogo.png" alt="Brand Logo" className="h-8 md:h-10" />
+              <span className="hidden md:block text-2xl font-semibold">SuperLearning</span>
+          </div>
+          <button
+              className="text-black text-2xl md:text-white md:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+              <FaBars />
+          </button>
+          <div className="hidden md:flex items-center space-x-4">
+              <Link
+                  href={route('dashboard')} 
+                  className="flex items-center space-x-2 hover:text-gray-200"
+              >
+                  <FaHome />
+                  <span>Home</span>
+              </Link>
+              <Link
+                  href={route('courses')}
+                  className="flex items-center space-x-2 hover:text-gray-200"
+              >
+                  <FaBook />
+                  <span>Courses</span>
+              </Link>
+              <Link
+                  href={route('settings')}
+                  className="flex items-center space-x-2 hover:text-gray-200"
+              >
+                  <FaCog />
+                  <span>Settings</span>
+              </Link>
+          </div>
+      </header>
 
             {/* Sliding Menu for Mobile */}
             <div
@@ -139,7 +142,10 @@ export default function Dashboard() {
                         <FaCog />
                         <span>Settings</span>
                     </Link>
-                    <button className="flex items-center space-x-2 hover:text-gray-300">
+                    <button
+                        onClick={() => window.location.href = route('home')} // Redirect to home
+                        className="flex items-center space-x-2 hover:text-gray-300"
+                    >
                         <FaSignOutAlt />
                         <span>Log Out</span>
                     </button>

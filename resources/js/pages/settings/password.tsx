@@ -1,5 +1,6 @@
 import InputError from '@/components/input-error';
 import AppLayout from '@/layouts/app-layout';
+import { FaArrowLeft } from 'react-icons/fa'; // Import left arrow icon
 import SettingsLayout from '@/layouts/settings/layout';
 import { type BreadcrumbItem } from '@/types';
 import { Transition } from '@headlessui/react';
@@ -13,7 +14,7 @@ import { Label } from '@/components/ui/label';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Password settings',
+        title: '',
         href: '/settings/password',
     },
 ];
@@ -50,15 +51,14 @@ export default function Password() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Profile settings" />
 
             <SettingsLayout>
-                <div className="space-y-6">
+                <div className="space-y-6 text-black">
                     <HeadingSmall title="Update password" description="Ensure your account is using a long, random password to stay secure" />
 
                     <form onSubmit={updatePassword} className="space-y-6">
                         <div className="grid gap-2">
-                            <Label htmlFor="current_password">Current password</Label>
+                            <Label htmlFor="current_password" className="text-black">Current password</Label>
 
                             <Input
                                 id="current_password"
@@ -75,7 +75,7 @@ export default function Password() {
                         </div>
 
                         <div className="grid gap-2">
-                            <Label htmlFor="password">New password</Label>
+                            <Label htmlFor="password" className="text-black">New password</Label>
 
                             <Input
                                 id="password"
@@ -92,7 +92,7 @@ export default function Password() {
                         </div>
 
                         <div className="grid gap-2">
-                            <Label htmlFor="password_confirmation">Confirm password</Label>
+                            <Label htmlFor="password_confirmation" className="text-black">Confirm password</Label>
 
                             <Input
                                 id="password_confirmation"
