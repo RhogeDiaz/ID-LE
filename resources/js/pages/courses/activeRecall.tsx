@@ -127,6 +127,18 @@ const ActiveRecall = () => {
             This process strengthens memory retention and helps you better understand the material.
           </p>
         </div>
+        <div className="video-container flex justify-center items-center">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/MrMAKPGjXZo?si=ciQM0gf5k2wmGpjV"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
+        </div>
 
         {/* Topic 2 */}
         <div id="why-is-active-recall-important" className="space-y-4">
@@ -135,6 +147,9 @@ const ActiveRecall = () => {
             Active recall is important because it enhances long-term memory retention, improves understanding of the material, and helps 
             identify gaps in knowledge. It is a proven method for effective learning and studying.
           </p>
+          <div className="flex justify-center items-center">
+            <img src="/images/actRec.png" width="500" height="250" alt="Logo" />
+          </div>
         </div>
 
         {/* Topic 3 */}
